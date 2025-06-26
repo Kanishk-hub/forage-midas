@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class UserRecord {
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
@@ -23,11 +23,6 @@ public class UserRecord {
         this.balance = balance;
     }
 
-    @Override
-    public String toString() {
-        return String.format("User[id=%d, name='%s', balance='%f'", id, name, balance);
-    }
-
     public Long getId() {
         return id;
     }
@@ -42,5 +37,10 @@ public class UserRecord {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("User[id=%d, name='%s', balance='%f']", id, name, balance);
     }
 }
